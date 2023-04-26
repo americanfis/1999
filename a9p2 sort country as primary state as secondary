@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Enter filename containing data of city, state, and country: "
+read file
+
+if [ -e "$file" ]
+then
+  echo "-----------Unsorted---------"
+  cat $file
+
+  echo "*************Sorted*********"
+  sort -t, -k3,3 -k2,2 $file
+
+else
+  echo "File not found"
+fi
