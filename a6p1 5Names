@@ -1,0 +1,39 @@
+#!/bin/bash
+echo "Enter the name of the file:"
+read filename
+while true; do
+ echo "Enter your choice:"
+ echo "1. Enter 5 names in the file"
+ echo "2. Sort the names in existing file"
+ echo "3. List unsorted and sorted file"
+ echo "4. Quit"
+ read choice
+ case $choice in
+ 1)
+ echo "Enter 5 names (one per line) to add to the file:"
+ for (( i=1; i<=5; i++ )); do
+ read name
+
+ echo $name >> $filename
+ done
+ echo "Names added to file."
+ ;;
+ 2)
+ sort $filename -o $filename
+ echo "Names sorted in file."
+ ;;
+ 3)
+ echo "Sorted names in file:"
+ sort $filename
+ echo "Unsorted names in file:"
+ cat $filename
+ ;;
+ 4)
+ echo "Exiting program."
+ exit 0
+ ;;
+ *)
+ echo "Invalid choice. Please enter a number between 1 and 4."
+ ;;
+ esac
+done 
