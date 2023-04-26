@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# check if 3 arguments are provided
+if [ $# -ne 3 ]; then
+    echo "Error: Expected 3 arguments, got $#"
+    exit 1
+fi
+
+# assign arguments to variables
+pattern="$1"
+input_file="$2"
+output_file="$3"
+
+# check if input file exists
+if [ ! -f "$input_file" ]; then
+    echo "Error: Input file '$input_file' not found"
+    exit 1
+fi
+
+# search for pattern in input file
+if grep -q "$pattern" "$input_file"; then
+    echo "Pattern found"
+else
+    echo "Error: Pattern not found"
+fi
+
+# write output to file
+echo "$pattern" > "$output_file"
