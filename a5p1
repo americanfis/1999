@@ -1,0 +1,52 @@
+#a5p11
+
+echo "Enter the file name: "
+read filename
+
+if [ -e "$filename" ]; then
+    echo "$filename exists."
+else
+    echo "$filename does not exist."
+fi
+
+#a5p12
+
+echo "Enter the file name: "
+read filename
+
+if [ -r "$filename" ]; then
+    echo "$filename is readable."
+else
+    echo "$filename is not readable."
+fi
+
+#a5p13
+
+echo "Enter the name of the file:"
+read filename
+
+if [ -w "$filename" ]
+then
+    echo "The file $filename is writable."
+else
+    echo "The file $filename is not writable."
+fi
+
+#a5p14
+
+echo "Enter the name of the file:"
+read filename
+
+if [ -r "$filename" ] && [ -w "$filename" ]
+then
+    echo "The file $filename is both readable and writable."
+elif [ ! -r "$filename" ] && [ ! -w "$filename" ]
+then
+    echo "The file $filename is not both readable and writable."
+elif [ -r "$filename" ] && [ ! -w "$filename" ]
+then
+    echo "The file $filename is readable but not writable."
+elif [ ! -r "$filename" ] && [ -w "$filename" ]
+then
+    echo "The file $filename is not readable but writable."
+fi
